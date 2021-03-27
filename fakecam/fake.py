@@ -50,6 +50,7 @@ def get_mask_tf(frame):
     out = np.apply_along_axis(np.argmax,2,results)
 
     # category labels for deeplabv3_257_mv_gpu.tflite
+    labels = [ "background",  ]
     labels = [ "background", "aeroplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "cat", "chair", "cow", "dining table", "dog", "horse", "motorbike", "person", "potted plant", "sheep", "sofa", "train", "tv" ]
 
     # set pixels with likeliest class == person to 1
@@ -123,7 +124,7 @@ try:
     parser.add_argument('-i', '--input', default='/dev/video0', help='real webcam device')
     parser.add_argument('-o', '--output', default='/dev/video20', help='loopback video device')
     parser.add_argument('--width', default=640, help='video width')
-    parser.add_argument('--height', default=400, help='video height')
+    parser.add_argument('--height', default=360, help='video height')
     parser.add_argument('--enable-hologram', action='store_true', help='enable hologram effect')
     parser.add_argument('background', default=['data/*'], nargs='*', help='background files (images or videos)')
 
